@@ -1,0 +1,18 @@
+#!/bin/bash
+
+mySleep() {
+	sleep 0.5
+};
+
+./Stop
+mySleep
+
+./servidorAlmacenamiento > /dev/null &
+sleep 1
+./broker -p 3000 -r localhost &
+mySleep
+./editor -h localhost -p 3000 -t a -m "mensaje    34    con  45     espacios" > /dev/null 
+mySleep
+java formatter.formatterPublisher &
+sleep 3
+java -cp . suscriptor.suscriptor -s localhost -p 3000

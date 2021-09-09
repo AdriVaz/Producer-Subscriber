@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -ne 0 ];then
+	echo "Uso: ./launchSuscriptor"
+	exit
+fi
+
+java -cp . suscriptor.suscriptor -s localhost -p 3000

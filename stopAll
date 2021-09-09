@@ -1,0 +1,22 @@
+#!/bin/bash
+
+############### KILL RPC ###############
+
+PID=`ps a | grep servidorAlmacenamiento -m 1| cut -d " " -f 1`
+echo $PID
+kill -10 $PID
+echo "Killed RPC server"
+
+############### KILL BROKER ###############
+
+PID=`ps a | grep broker -m 1| cut -d " " -f 1`
+echo $PID
+kill -10 $PID
+echo "Killed broker"
+
+############### KILL WS PUBLISHER ###############
+
+PID=`ps a | grep formatter -m 1| cut -d " " -f 1`
+echo $PID
+kill -10 $PID
+echo "Killed WS"
